@@ -1,0 +1,26 @@
+ LS -> S LS
+ LS -> 
+ S -> "WHILE" "(" EBool ")" S
+ S -> "IF" "(" EBool ")" S X
+ S -> "VAR" "ID" ";"
+ S -> "ID" = E ";"
+ S -> "PRINT" "(" "STRING" "," E ")" ";"
+ X -> "ELSE" S
+ X ->
+ E -> T R
+ R -> "+" T R
+ R -> "-" T R
+ R -> 
+ T -> F U
+ U -> "*" F U 
+ U -> "/" F U
+ U -> 
+ F -> "ID"
+ F -> "NUM"
+ F -> "(" E ")"
+ EBool -> E "==" E
+ EBool -> E ">=" E
+ EBool -> E "<=" E
+ EBool -> E "!=" E
+ EBool -> E "<" E
+ EBool -> E ">" E
