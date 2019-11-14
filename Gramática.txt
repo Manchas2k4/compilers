@@ -1,22 +1,28 @@
  LS -> S LS
- LS -> 
+ LS ->
  S -> "WHILE" "(" EBool ")" S
  S -> "IF" "(" EBool ")" S X
  S -> "VAR" "ID" ";"
  S -> "ID" = E ";"
  S -> "PRINT" "(" "STRING" "," E ")" ";"
+ S -> "PENUP"
+ S -> "PENDOWN"
+ S -> "FD" E
+ S -> "BK" E
+ S -> "RT" E
+ S -> "LT" E
  S -> "{" LS "}"
  X -> "ELSE" S
  X ->
  E -> T R
  R -> "+" T R
  R -> "-" T R
- R -> 
+ R ->
  T -> F U
- U -> "*" F U 
+ U -> "*" F U
  U -> "/" F U
  U -> "^" F U
- U -> 
+ U ->
  F -> "ID"
  F -> "NUM"
  F -> "(" E ")"
