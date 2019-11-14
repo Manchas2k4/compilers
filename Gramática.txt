@@ -5,12 +5,12 @@
  S -> "VAR" "ID" ";"
  S -> "ID" = E ";"
  S -> "PRINT" "(" "STRING" "," E ")" ";"
- S -> "PENUP"
- S -> "PENDOWN"
- S -> "FD" E
- S -> "BK" E
- S -> "RT" E
- S -> "LT" E
+ S -> "PENUP" ";"
+ S -> "PENDOWN" ";"
+ S -> "FD" E ";"
+ S -> "BK" E ";"
+ S -> "RT" E ";"
+ S -> "LT" E ";" 
  S -> "{" LS "}"
  X -> "ELSE" S
  X ->
