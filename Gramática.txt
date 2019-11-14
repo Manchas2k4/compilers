@@ -5,6 +5,7 @@
  S -> "VAR" "ID" ";"
  S -> "ID" = E ";"
  S -> "PRINT" "(" "STRING" "," E ")" ";"
+ S -> "{" LS "}"
  X -> "ELSE" S
  X ->
  E -> T R
@@ -14,6 +15,7 @@
  T -> F U
  U -> "*" F U 
  U -> "/" F U
+ U -> "^" F U
  U -> 
  F -> "ID"
  F -> "NUM"
