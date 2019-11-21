@@ -2,14 +2,11 @@ var i;
 
 i = 0;
 while (i < 6) {
-	bk 100;
-	lt 20;
+	print("i = ", i);
+	if (i == 3) {
+		print("i equals ", 3);
+	} else {
+		print ("i not equals ", 3);
+	}
 	i = i + 1;
 }
-
-penup;
-
-fd 100;
-rt 90;
-
-pendown;
