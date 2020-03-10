@@ -62,7 +62,7 @@ addition-operator ::= “+” | “-” | “or”
 multiplication-operator ::= “*” | “/” | “mod” | “and”
 variable ::= <variable-identifier>
 
-variable-identifier ::= ":"<identifier>
+variable-identifier ::= ":" <identifier>
 procedure-identifier ::= <identifier>
 identifier ::= <letter> { <letter> | <digit> }
 
@@ -70,10 +70,6 @@ variable-identifier-list ::= <variable-identifer> { <variable-identifier> }
 identifier-list ::= <identifier> { <identifier> }
 number ::= <integer-number> | <real-number>
 integer-number ::= <digit-sequence>
-real-number ::= <digit-sequence> “.” [ <unsigned-digit-sequence> ] [ <scale-factor> ]
-				| <digit-sequence> <scale-factor>
-scale-factor ::= ( “E” | “e” ) <digit-sequence>
-unsigned-digit-sequence ::= <digit> { <digit> }
 digit-sequence ::= [ <sign> ] <unsigned-digit-sequence>
 sign ::= “+” | “-”
 letter ::= [ “A” - “Z” ] | [ “a” - “z” ]
