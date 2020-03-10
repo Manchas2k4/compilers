@@ -1,5 +1,4 @@
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import lexer.Lexer;
@@ -20,5 +19,7 @@ public class Main {
 			System.out.println("" + token.toString());
 			token = lex.scan();
 		}
+		
+		System.out.println("END");
 	}
 }

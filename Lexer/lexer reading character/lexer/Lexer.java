@@ -43,15 +43,15 @@ public class Lexer {
 		reserve(new Word("pendown", Tag.PENDOWN));
 		reserve(new Word("pd", Tag.PENDOWN));
 		reserve(new Word("color", Tag.COLOR));
-		reserve(new Word("penwidth", Tag.PENDWIDTH));
+		reserve(new Word("penwidth", Tag.PENWIDTH));
 		reserve(new Word("print", Tag.PRINT));
 		reserve(Word.And); reserve(Word.Or);
 		reserve(Word.True); reserve(Word.False);
+		reserve(Word.Not);
 	}
 	
 	private void readch() throws IOException {
-		int temp = input.read();
-		peek = (temp != -1)? ((char) temp) : Tag.EOF;
+		peek = (char) input.read();
 	}
 	
 	private boolean readch(char c) throws IOException {

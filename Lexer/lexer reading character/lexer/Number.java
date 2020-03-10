@@ -11,4 +11,8 @@ public class Number extends Token {
 	public int getValue() {
 		return value;
 	}
+	
+	public String toString() {
+		return super.toString() + " <-> value = "  + value;
+	}
 }

@@ -71,6 +71,7 @@ identifier-list ::= <identifier> { <identifier> }
 number ::= <integer-number> | <real-number>
 integer-number ::= <digit-sequence>
 digit-sequence ::= [ <sign> ] <unsigned-digit-sequence>
+unsigned-digit-sequence ::= <digit> { <digit> }
 sign ::= “+” | “-”
 letter ::= [ “A” - “Z” ] | [ “a” - “z” ]
 digit ::= [ “0” - “9” ]

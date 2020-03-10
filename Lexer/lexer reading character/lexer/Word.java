@@ -13,14 +13,13 @@ public class Word extends Token {
 	}
 	
 	public String toString() {
-		return lexeme;
+		return super.toString() + " <-> lexeme = " + lexeme;
 	}
 	
 	public static final Word
-		And = new Word( "and", Tag.AND ),  	Or = new Word( "or", Tag.OR ),
-		eq = new Word("==", Tag.EQ), 		ne = new Word("!=", Tag.NE),
-		le  = new Word( "<=", Tag.LE  ),  	ge = new Word( ">=", Tag.GE ),
-		minus  = new Word( "minus", Tag.MINUS ),
-		True   = new Word( "true",  Tag.TRUE  ),
-		False  = new Word( "false", Tag.FALSE );
+		And = new Word( "and", Tag.AND ),  			Or = new Word( "or", Tag.OR ),
+		eq = new Word("==", Tag.EQ), 				ne = new Word("!=", Tag.NE),
+		le  = new Word( "<=", Tag.LE  ),  			ge = new Word( ">=", Tag.GE ),
+		minus  = new Word( "minus", Tag.MINUS ),	Not = new Word( "not", Tag.NOT ),
+		True   = new Word( "true",  Tag.TRUE  ),	False  = new Word( "false", Tag.FALSE );
 }
