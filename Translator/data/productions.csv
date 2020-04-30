@@ -1,0 +1,11 @@
+E,T,EPrime
+EPrime,+,T,EPrime
+EPrime,-,T,EPrime
+EPrime,epsilon
+T,F,TPrime
+TPrime,*,F,TPrime
+TPrime,/,F,TPrime
+TPrime,epsilon
+F,ID
+F,NUMBER
+F,(,E,)
