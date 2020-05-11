@@ -3,22 +3,22 @@ package translation;
 public class TPrimeOne extends TPrime {
 	protected Operator op;
 	protected Factor factor;
-	protected TPrime tPrime;
-	
+	protected TPrime t1Prime;
+
 	public TPrimeOne(Operator op, Factor factor, TPrime tPrime) {
 		super();
 		this.inherited = null;
 		this.synthesized = null;
 		this.op = op;
 		this.factor = factor;
-		this.tPrime = tPrime;
+		this.t1Prime = tPrime;
 	}
 
 	@Override
 	public String eval() {
 		if (synthesized == null) {
-			tPrime.inherited = inherited + " " + factor.eval() + " " + op.eval();
-			synthesized = tPrime.eval();
+			t1Prime.inherited = inherited + " " + factor.eval() + " " + op.eval();
+			synthesized = t1Prime.eval();
 		}
 		return synthesized;
 	}

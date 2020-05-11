@@ -1,0 +1,92 @@
+programa -> program-heading ; program-block .
+program-heading -> program identifier opt-program-parameters
+opt-program-parameters -> ( program-parameters )
+opt-program-parameters -> ''
+program-parameters -> identifier-list
+program-block -> constant-declaration-part variable-declaration-part statement-part
+constant-declaration-part -> constant constant-definition ; more-constant-definition
+constant-declaration-part -> ''
+more-constant-definition -> constant-definition ; more-constant-definition
+more-constant-definition -> ''
+variable-declaration-part -> var variable-declaration ; more-variable-declaration
+variable-declaration-part -> ''
+more-variable-declaration -> variable-declaration ; more-variable-declaration
+more-variable-declaration -> ''
+variable-declaration -> identifier-list : type
+statement-part -> begin statement-sequence end .
+type -> integer
+type -> real
+type -> boolean
+type -> string
+identifier-list -> identifier more-identifier
+more-identifier -> , identifier more-identifier
+more-identifier -> ''
+statement-sequence -> statement more-statement
+more-statement -> ; statement more-statement
+more-statement -> ''
+statement -> simple-statement
+statement -> structured-statement
+simple-statement -> assignment-statement
+simple-statement -> IO-statement
+simple-statement -> ''
+assignment-statement -> identifier := expression
+IO-statement -> writeln-statement
+IO-statement -> readln-statement
+writeln-statement -> writeln ( opt-element-list )
+opt-element-list -> element-list
+opt-element-list -> ''
+element-list -> element more-element
+more-element -> , element more-element
+more-element -> ''
+element -> number
+element -> string
+element -> identifier
+readln-statement -> readln opt-identifier-list
+opt-identifier-list -> ''
+opt-identifier-list -> ( identifier-list )
+structured-statement -> compound-statement
+structured-statement -> repetitive-statement
+structured-statement -> conditional-statement
+compound-statement -> begin statement-sequence end .
+repetitive-statement -> while-statement
+repetitive-statement -> repeat-stateexpressionment
+repetitive-statement -> for-statement
+while-statement -> while expression do statement
+repeat-statement -> repeat statement-sequence until expression
+for-statement -> for identifier := expression to-downto expression do statement
+to-downto -> to
+to-downto -> downto
+conditional-statement -> if expression then statement opt-else
+opt-else -> else statement
+opt-else -> ''
+expression -> simple-expression opt-rel-expression
+opt-rel-expression -> relational-operator simple-expression
+opt-rel-expression -> ''
+simple-expression -> opt-sign term more-add-term
+opt-sign -> +
+opt-sign -> -
+opt-sign -> ''
+more-add-term -> addition-operator term more-add-term
+more-add-term -> ''
+term -> factor more-mult-term
+more-mult-term -> multiplication-operator factor more-mult-term
+more-mult-term -> ''
+factor -> identifier
+factor -> number
+factor -> string
+factor -> ( expression )
+factor -> not factor
+relational-operator -> =
+relational-operator -> <>
+relational-operator -> <
+relational-operator -> <=
+relational-operator -> >
+relational-operator -> >=
+addition-operator -> +
+addition-operator -> -
+addition-operator -> or
+multiplication-operator -> *
+multiplication-operator -> /
+multiplication-operator -> div
+multiplication-operator -> mod
+multiplication-operator -> and
