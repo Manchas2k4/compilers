@@ -5,6 +5,8 @@ import java.util.Hashtable;
 import lexer.Lexer;
 import lexer.Tag;
 import lexer.Token;
+import lexer.Integer;
+import lexer.Real;
 
 public class Main {
 	public static void main(String args[]) throws IOException {
@@ -20,6 +22,11 @@ public class Main {
 			System.out.print("" + token.toString());
 			if (lex.isReserved(token)) {
 				System.out.print(" - RESERVED");
+				if (token instanceof Integer) {
+					System.out.print(" - lexeme = " + ((Integer) token).getValue());
+				} else if (token instanceof Real) {
+					System.out.print(" - lexeme = " + ((Real) token).getValue());
+				} 
 			} else {
 				System.out.print(" - TOKEN");
 			}
@@ -27,6 +34,6 @@ public class Main {
 			token = lex.scan();
 		}
 		
-		System.out.println("END");
+		System.out.println("EOF");
 	}
 }

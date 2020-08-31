@@ -10,5 +10,5 @@ public class Tag {
 		THEN	= 276,	ELSE	= 277, 	NOT		= 278,	EQ		= 279,	NEQ		= 280,
 		GE		= 281,	LE		= 282, 	FALSE 	= 283,	TRUE	= 284, 	DIV 	= 285,
 		MOD		= 286,	AND		= 287, 	OR		= 288,	MINUS	= 289, 	ID		= 290,
-		ERROR = 293;
+		CHARACTERSTRING = 291, ERROR = 293;
 }

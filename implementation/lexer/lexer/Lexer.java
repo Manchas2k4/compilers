@@ -6,7 +6,7 @@ import java.util.Hashtable;
 public class Lexer {
 	private char peek;
 	private Hashtable<String, Token> words = new Hashtable<String, Token>();
-	private InputStream input;
+	private PushbackInputStream input;
 	public static int line = 1;
 	
 	public void reserve(Word w) {
@@ -19,7 +19,7 @@ public class Lexer {
 	
 	public Lexer(InputStream input) {
 		this.peek = ' ';
-		this.input = input;
+		this.input = new PushbackInputStream(input);
 		
 		reserve( new Word("program", Tag.PROGRAM) );
 		reserve( new Word("constante", Tag.CONSTANT) );
@@ -61,6 +61,23 @@ public class Lexer {
    }
 	
 	public Token scan() throws IOException {
+		if (peek == '(') {
+			char current, next;
+			
+			current = (char) input.read();
+			if (current == '*') {
+				current = (char) input.read();
+				next = (char) input.read();
+				while (current != '*' && next != ')') {
+					current = next;
+					next = (char) input.read();
+				}
+				readch();
+			} else {
+				input.unread(current);
+			}
+		}
+		
 		for ( ; ; readch() ) {
 			if (peek == ' ' || peek == '\t') {
 				continue;
@@ -77,6 +94,19 @@ public class Lexer {
 			if( readch('=') ) return Word.le;   else return new Token('<');
 			case '>':
 			if( readch('=') ) return Word.ge;   else return new Token('>');
+		}
+		
+		if (peek == '"') {
+			StringBuffer b = new StringBuffer();
+			
+			readch();
+			do {
+				b.append(peek);
+				readch();
+			} while ( peek != '"' ) ;
+			String s = b.toString();
+			CharacterString cs = new CharacterString(s);
+			return cs;
 		}
 			
 		if (Character.isDigit(peek)) {

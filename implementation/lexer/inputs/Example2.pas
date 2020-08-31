@@ -7,7 +7,7 @@ Begin
 	Readln(Num1);
 	Writeln('Input number 2:');
 	Readln(Num2);
-	Sum := Num1 + Num2; 
+	Sum := Num1 + Num2 + 123 + 3.1415; 
 	Writeln(Sum);
 	Readln;
 End. 
