@@ -11,4 +11,8 @@ public class Integer extends Token {
 	public int getValue() {
 		return value;
 	}
+	
+	public String toString() {
+		return "INTEGER - VALUE = " + value;
+	}
 }

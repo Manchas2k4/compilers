@@ -11,4 +11,8 @@ public class Real extends Token {
 	public float getValue() {
 		return value;
 	}
+	
+	public String toString() {
+		return "REAL - VALUE = " + value;
+	}
 }

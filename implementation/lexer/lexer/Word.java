@@ -12,6 +12,10 @@ public class Word extends Token {
 		return lexeme;
 	}
 	
+	public String toString() {
+		return "WORD - LEXEME = " + lexeme;
+	}
+	
 	public static final Word 
 		eq  = new Word( "==", Tag.EQ  ),  ne = new Word( "<>", Tag.NEQ ),
 		le  = new Word( "<=", Tag.LE  ),  ge = new Word( ">=", Tag.GE ),

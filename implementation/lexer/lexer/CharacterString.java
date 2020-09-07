@@ -11,4 +11,8 @@ public class CharacterString extends Token {
 	public String getValue() {
 		return value;
 	}
+	
+	public String toString() {
+		return "STRING - VALUE = " + value;
+	}
 }
