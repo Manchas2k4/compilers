@@ -8,6 +8,7 @@ Begin
 	readln(surname);
 	writeln;
 	writeln;
+	(* This is a Pascal comment *)
 	writeln("Your full name is: ",name," ",surname);
 	readln;
 End.
