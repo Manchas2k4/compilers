@@ -12,6 +12,13 @@ public class Token {
 	}
 	
 	public String toString() {
-		return "TOKEN - VALUE = " + ((char) tag);
+		String s = "TOKEN, symbol = ";
+		
+		switch (tag) {
+		case Tag.EOF		: s += "EOF"; break;
+		default				: s += (char) tag; break;
+		}
+		
+		return s;
 	}
 }

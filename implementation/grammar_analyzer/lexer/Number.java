@@ -1,10 +1,10 @@
 package lexer;
 
-public class Integer extends Token {
+public class Number extends Token {
 	private int value;
 	
-	public Integer(int value) {
-		super(Tag.INTEGER);
+	public Number(int value) {
+		super(Tag.NUMBER);
 		this.value = value;
 	}
 	
@@ -13,6 +13,6 @@ public class Integer extends Token {
 	}
 	
 	public String toString() {
-		return "INTEGER - VALUE = " + value;
+		return "NUMBER, value = " + value;
 	}
 }
