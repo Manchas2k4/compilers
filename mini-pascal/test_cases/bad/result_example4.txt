@@ -1,0 +1,3 @@
+main.pas(3,9) Fatal: Syntax error, "BEGIN" expected but "identifier WRITELN" found
+Fatal: Compilation aborted
+Error: /usr/bin/ppcx64 returned an error exitcode (normal if you did not specify a source file to be compiled)
