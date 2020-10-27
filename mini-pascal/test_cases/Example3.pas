@@ -6,8 +6,8 @@ Begin
 	readln(name);
 	writeln("Enter your surname:");
 	readln(surname);
-	writeln;
-	writeln;
+	writeln();
+	writeln();
 	(* COMMENTS *)
 	writeln("Your full name is: ", name, " ", surname);
 	readln;
