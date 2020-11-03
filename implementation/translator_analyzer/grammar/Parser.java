@@ -10,11 +10,11 @@ import lexer.Token;
 public class Parser {
 	private Lexer lexer;
 	private Token token;
-	
+
 	public Parser (FileInputStream input) {
 		lexer = new Lexer(input);
 	}
-	
+
 	private void check(int tag) throws SyntaxError, Exception {
 		if (token.getTag() == tag) {
 			token = lexer.scan();
@@ -22,32 +22,32 @@ public class Parser {
 			throw new SyntaxError();
 		}
 	}
-	
+
 	public void analyze() throws Exception {
 		String aux;
-		
+
 		token = lexer.scan();
 		aux = E();
-		System.out.println("ACCEPTED - Result " + aux);
+		System.out.println("ACCEPTED - Result = " + aux);
 	}
-	
+
 	private String E() throws Exception {
 		String aux;
-		
+
 		aux = T();
 		return EPrime(aux);
 	}
-	
+
 	private String T() throws Exception {
 		String aux;
-		
+
 		aux = F();
 		return TPrime(aux);
 	}
-	
+
 	private String EPrime(String inherited) throws Exception {
 		String aux;
-		
+
 		if (token.getTag() == ((int) '+')) {
 			check((int) '+');
 			aux = inherited + " " + T() + " +";
@@ -60,10 +60,10 @@ public class Parser {
 			return inherited;
 		}
 	}
-	
+
 	private String F() throws SyntaxError, Exception {
 		String aux = token.toString();
-		
+
 		if (token.getTag() == Tag.NUMBER) {
 			check(Tag.NUMBER);
 			return aux;
@@ -79,10 +79,10 @@ public class Parser {
 			throw new SyntaxError();
 		}
 	}
-	
+
 	private String TPrime(String inherited) throws Exception {
 		String aux;
-		
+
 		if (token.getTag() == ((int) '*')) {
 			check((int) '*');
 			aux = inherited + " " + F() + " *";
