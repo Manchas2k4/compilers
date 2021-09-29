@@ -1,3 +1,0 @@
-Compiling main.pas
-main.pas(6,4) Fatal: Syntax error, "." expected but "end of file" found
-Fatal: Compilation aborted
