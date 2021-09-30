@@ -11,11 +11,11 @@ import lexer.Token;
 public class Parser {
 	private Lexer lexer;
 	private Token token;
-	
+
 	public Parser (FileInputStream input) {
 		lexer = new Lexer(input);
 	}
-	
+
 	private void check(int tag) throws SyntaxError, IOException {
 		if (token.getTag() == tag) {
 			token = lexer.scan();
@@ -23,13 +23,13 @@ public class Parser {
 			throw new SyntaxError();
 		}
 	}
-	
+
 	public void analyze() throws SyntaxError, IOException {
 		token = lexer.scan();
 		statementSequence();
 		System.out.println("ACCEPTED");
 	}
-	
+
 	private void statementSequence() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR || token.getTag() == Tag.ID || token.getTag() == Tag.PRINT  ||
 		    token.getTag() == Tag.WHILE || token.getTag() == (int) '{' || token.getTag() == Tag.IF) {
@@ -39,7 +39,7 @@ public class Parser {
 			//do nothing
 		}
 	}
-	
+
 	private void sentence() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR) {
 			check(Tag.VAR);
@@ -49,6 +49,7 @@ public class Parser {
 			check(Tag.ID);
 			check((int) '=');
 			expression();
+			check((int) ';');
 		} else if (token.getTag() == Tag.PRINT) {
 			// TO DO
 		} else if (token.getTag() == Tag.WHILE) {
@@ -62,9 +63,9 @@ public class Parser {
 			check((int) ')');
 			sentence();
 			restIf();
-		} 
+		}
 	}
-	
+
 	private void restIf() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.ELSE) {
 			check(Tag.ELSE);
@@ -73,17 +74,12 @@ public class Parser {
 			// do nothing
 		}
 	}
-	
+
 	private void expression() throws SyntaxError, IOException {
 		term();
 		ePrime();
 	}
-	
-	private void term() throws SyntaxError, IOException {
-		factor();
-		tPrime();
-	}
-	
+
 	private void ePrime() throws SyntaxError, IOException {
 		if (token.getTag() == ((int) '+')) {
 			check((int) '+');
@@ -97,21 +93,12 @@ public class Parser {
 			// do nothing
 		}
 	}
-	
-	private void factor() throws SyntaxError, IOException {
-		if (token.getTag() == Tag.NUMBER) {
-			check(Tag.NUMBER);
-		} else if (token.getTag() == Tag.ID) {
-			check(Tag.ID);
-		} else if (token.getTag() == ((int) '(')) {
-			check((int) '(');
-			expression();
-			check((int) ')');
-		} else {
-			throw new SyntaxError();
-		}
+
+	private void term() throws SyntaxError, IOException {
+		factor();
+		tPrime();
 	}
-	
+
 	private void tPrime() throws SyntaxError, IOException {
 		if (token.getTag() == ((int) '*')) {
 			check((int) '*');
@@ -125,25 +112,43 @@ public class Parser {
 			// do nothing
 		}
 	}
-	
-	private void eBool() throws SyntaxError, IOException {
-		// TO DO
-	}
-	
-	private void displayList() throws SyntaxError, IOException {
-		// TO DO
-	}
-	
-	private void element() throws SyntaxError, IOException {
-		if (token.getTag() == Tag.VAR) {
-			check(Tag.VAR);
+
+	private void factor() throws SyntaxError, IOException {
+		if (token.getTag() == Tag.ID) {
+			check(Tag.ID);
 		} else if (token.getTag() == Tag.NUMBER) {
 			check(Tag.NUMBER);
 		} else if (token.getTag() == Tag.STRING) {
 			check(Tag.STRING);
+		} else if (token.getTag() == ((int) '(')) {
+			check((int) '(');
+			expression();
+			check((int) ')');
+		} else {
+			throw new SyntaxError();
 		}
 	}
-	
+
+	private void eBool() throws SyntaxError, IOException {
+		// TO DO
+	}
+
+	private void displayList() throws SyntaxError, IOException {
+		// TO DO
+	}
+
+	private void element() throws SyntaxError, IOException {
+		if (token.getTag() == Tag.ID) {
+			check(Tag.ID);
+		} else if (token.getTag() == Tag.NUMBER) {
+			check(Tag.NUMBER);
+		} else if (token.getTag() == Tag.STRING) {
+			check(Tag.STRING);
+		} else {
+			throws new SyntaxError();
+		}
+	}
+
 	private void elementSequence() throws SyntaxError, IOException {
 		// TO DO
 	}

@@ -10,6 +10,6 @@ while (i < 6) {
 penup;
 
 fd 100;
-rt 90;
+bk 90;
 
 pendown;
