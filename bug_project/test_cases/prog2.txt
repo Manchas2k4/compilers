@@ -1,5 +1,5 @@
 var i;
-
+// tambien se puede usar fd (10 + 40)
 i = 0;
 while (i < 6) {
 	print("i = ", i);

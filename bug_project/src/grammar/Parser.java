@@ -33,14 +33,14 @@ public class Parser {
 	private void statementSequence() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR || token.getTag() == Tag.ID || token.getTag() == Tag.PRINT  ||
 		    token.getTag() == Tag.WHILE || token.getTag() == (int) '{' || token.getTag() == Tag.IF) {
-		sentence();
+		statement();
 		statementSequence();
 		} else {
 			//do nothing
 		}
 	}
 
-	private void sentence() throws SyntaxError, IOException {
+	private void statement() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR) {
 			check(Tag.VAR);
 			check(Tag.ID);
@@ -61,7 +61,7 @@ public class Parser {
 			check((int) '(');
 			eBool();
 			check((int) ')');
-			sentence();
+			statement();
 			restIf();
 		}
 	}
@@ -69,7 +69,7 @@ public class Parser {
 	private void restIf() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.ELSE) {
 			check(Tag.ELSE);
-			sentence();
+			statement();
 		} else {
 			// do nothing
 		}
