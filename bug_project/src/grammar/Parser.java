@@ -20,31 +20,18 @@ public class Parser {
 		if (token.getTag() == tag) {
 			token = lexer.scan();
 		} else {
-			throw new SyntaxError();
+			throw new SyntaxError("Error in line " + lexer.line);
 		}
 	}
 
-	/*
-	 public void analyze() throws SyntaxError, IOException {
-		token = lexer.scan();
-		statementSequence();
-		if (token.getTag() == Tag.EOF) {
-			System.out.println("ACCEPTED");
-		} else {
-			throw new SyntaxError();
-		}
-	}
-	*/
-
-	public void analyze() throws SyntaxError, IOException {
-		token = lexer.scan();
-		statementSequence();
-		if (token.getTag() == Tag.EOF) {
-			System.out.println("ACCEPTED");
-		} else {
-			throw new SyntaxError();
-		}
-	}
+    public void analyze() throws SyntaxError, IOException {
+      token = lexer.scan(); statementSequence();
+      if (token.getTag() == Tag.EOF) {
+        System.out.println("ACCEPTED");
+      } else {
+        throw new SyntaxError("Error in line " + lexer.line);
+      }
+    }
 
 	private void statementSequence() throws SyntaxError, IOException {
 		if (token.getTag() == Tag.VAR || token.getTag() == Tag.ID || token.getTag() == Tag.PRINT  ||
