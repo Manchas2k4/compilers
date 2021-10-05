@@ -77,7 +77,7 @@ public class Parser {
 			check((int) '(');
 			eBool();
 			check((int) ')');
-			sentence();
+			statement();
 		} else if (token.getTag() == (int) '{') {
 			check((int) '{');
 			statementSequence();
