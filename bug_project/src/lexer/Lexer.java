@@ -22,6 +22,18 @@ public class Lexer {
     addReserveWord(new Word("while", Tag.WHILE));
     addReserveWord(new Word("if", Tag.IF));
     addReserveWord(new Word("else", Tag.ELSE));
+    addReserveWord(new Word("home", Tag.HOME));
+    addReserveWord(new Word("penup", Tag.PENUP));
+    addReserveWord(new Word("pendown", Tag.PENDOWN));
+    addReserveWord(new Word("forward", Tag.FORWARD));
+    addReserveWord(new Word("fd", Tag.FORWARD));
+    addReserveWord(new Word("backward", Tag.BACKWARD));
+    addReserveWord(new Word("bk", Tag.BACKWARD));
+    addReserveWord(new Word("left", Tag.LEFT));
+    addReserveWord(new Word("lt", Tag.LEFT));
+    addReserveWord(new Word("right", Tag.RIGHT));
+    addReserveWord(new Word("rt", Tag.RIGHT));
+    addReserveWord(new Word("move", Tag.MOVE));
   }
 
   private void readch() throws IOException {
@@ -59,7 +71,7 @@ public class Lexer {
       case '/':
         if (readch('/')) {
           while(!readch('\n') && peek != '\r');
-          while(readch('\n') || peek == '\r');
+          while(readch('\n') || peek == '\r' || peek == '\t' || peek == ' ');
           line = line + 1;
         } else return new Token('/');
         break;

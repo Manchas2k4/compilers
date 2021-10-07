@@ -28,6 +28,14 @@ public class Token {
 		case Tag.IF		: return "IF";
 		case Tag.ELSE	: return "ELSE";
 		case Tag.EOF	: return "EOF";
+		case Tag.HOME: return "HOME";
+		case Tag.PENUP: return "PENUP";
+		case Tag.PENDOWN: return "PENDOWN";
+		case Tag.FORWARD: return "FORWARD";
+		case Tag.BACKWARD: return "BACKWARD";
+		case Tag.LEFT: return "LEFT";
+		case Tag.RIGHT: return "RIGHT";
+		case Tag.MOVE: return "MOVE";
 		default			: return "TOKEN <-> " + (char) tag;
 		}
 	}
